@@ -3,12 +3,12 @@ pipeline {
 	
     stages {
         stage('Build Application') {
-		
+	    def mvnHome = tool name: 'Maven', type: 'maven'
+	    def mvnCMD = "${mvnHome}/bin/mvn"
             steps {
-		 withMaven(Maven: 'apache-maven-3.6.1'){
-                sh 'mvn -f java-tomcat-sample/pom.xml clean package'
-            }
+		 sh '{mvnHome}/bin/mvn -f java-tomcat-sample/pom.xml clean package'
 	    }
+	    
             post {
                 success {
                     echo "Now Archiving the Artifacts...."
