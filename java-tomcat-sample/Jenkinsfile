@@ -18,20 +18,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy in Staging Environment'){
-            steps{
-                build job: 'deploy_appl_stag'
-
-            }
-            
-        }
-        stage('Deploy to Production'){
-            steps{
-                timeout(time:5, unit:'DAYS'){
-                    input message:'Approve PRODUCTION Deployment?'
-                }
-                build job: 'Deploy_Appln_Prod'
-            }
-        }
+        
+        
     }
 }
