@@ -5,7 +5,7 @@ pipeline {
         stage('Build Application') {
 	    tools {
         maven 'Maven'
-    }
+            }
             steps {
 		 
                 sh 'mvn -f java-tomcat-sample/pom.xml clean package'
